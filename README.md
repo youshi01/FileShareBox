@@ -1,6 +1,9 @@
-# FileShareBox PHP
+# FileShareBox
 
 基于 `PHP + MySQL` 的匿名分享系统，支持文件上传、文本分享、提取码取件。
+
+[![Release](https://img.shields.io/github/v/release/youshi01/FileShareBox)](https://github.com/youshi01/FileShareBox/releases)
+[![Docker](https://img.shields.io/badge/docker-ghcr.io-blue)](https://github.com/youshi01/FileShareBox/pkgs/container/filesharebox)
 
 ## 功能
 
@@ -10,7 +13,9 @@
 - 后台管理：记录查看、系统配置、密码修改
 - 安全机制：频控、CSRF 防护、SQL 预处理
 
-## 快速部署（Docker）
+## Docker 部署（推荐）
+
+### 首次部署
 
 ```bash
 git clone https://github.com/youshi01/FileShareBox.git
@@ -19,29 +24,45 @@ cp .env.example .env
 docker compose up -d
 ```
 
-访问 `http://localhost:8080`
+访问 `http://localhost:8080`，默认管理员 `admin` / `admin123456`（首次登录后请修改）。
 
-默认管理员：`admin` / `admin123456`（首次登录后请修改）
-
-### 更新
+### 更新版本
 
 ```bash
 docker compose pull
 docker compose up -d
 ```
 
-### 回滚到指定版本
+### 指定版本
 
-```bash
-# 编辑 docker-compose.yml，将 image 改为指定版本
-# image: ghcr.io/youshi01/filesharebox:v1.0.0
-docker compose pull
-docker compose up -d
+编辑 `docker-compose.yml`，将 image 改为指定版本：
+
+```yaml
+image: ghcr.io/youshi01/filesharebox:v1.0.0
 ```
 
-### 查看可用版本
+然后执行：
 
-GitHub Packages 页面：`https://github.com/youshi01/FileShareBox/pkgs/container/filesharebox`
+```bash
+docker compose pull && docker compose up -d
+```
+
+### 查看日志
+
+```bash
+docker compose logs -f app
+```
+
+### 停止服务
+
+```bash
+docker compose down
+```
+
+### 可用版本
+
+- [GitHub Releases](https://github.com/youshi01/FileShareBox/releases) — 版本发布说明
+- [GHCR 镜像](https://github.com/youshi01/FileShareBox/pkgs/container/filesharebox) — Docker 镜像列表
 
 ## 本地构建（开发）
 
@@ -96,10 +117,10 @@ php -S 0.0.0.0:8000 -t public
 编辑 `.env` 文件：
 
 ```env
-DB_HOST=127.0.0.1
+DB_HOST=db
 DB_DATABASE=filesharebox
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD=root
 
 MAX_UPLOAD_MB=200
 ALLOW_GUEST_UPLOAD=1
@@ -109,14 +130,20 @@ ALLOW_GUEST_UPLOAD=1
 
 ## 清理
 
-建议定时执行清理脚本：
+Docker 环境下 MySQL 数据持久化在 volume 中，上传文件挂载在 `./storage/uploads`。
+
+建议定时执行清理脚本（自动清理过期记录）：
 
 ```bash
+# Docker 环境
+docker compose exec app php scripts/cleanup.php
+
+# 本地环境
 php scripts/cleanup.php
 ```
 
 Linux cron 示例：
 
 ```bash
-*/30 * * * * /usr/bin/php /path/to/scripts/cleanup.php >> /path/to/storage/logs/cleanup.log 2>&1
+*/30 * * * * docker compose -f /path/to/docker-compose.yml exec app php scripts/cleanup.php
 ```
