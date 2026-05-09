@@ -147,3 +147,7 @@ Linux cron 示例：
 ```bash
 */30 * * * * docker compose -f /path/to/docker-compose.yml exec app php scripts/cleanup.php
 ```
+
+## 二次开发
+
+二开请看 [docs/development.md](docs/development.md)
