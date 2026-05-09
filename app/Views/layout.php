@@ -8,7 +8,7 @@ use App\Helpers\Security;
 $assetDir = dirname(__DIR__, 2) . '/public/assets/';
 $styleVersion = (string) (@filemtime($assetDir . 'style.css') ?: time());
 $scriptVersion = (string) (@filemtime($assetDir . 'app.js') ?: time());
-$siteTitle = (string) ($siteName ?? 'FileCodeBox PHP');
+$siteTitle = (string) ($siteName ?? 'FileShareBox PHP');
 $siteTagline = (string) ($siteTagline ?? '像取快递一样取文件，匿名分享文本和文件。');
 $showAdminEntry = (bool) ($showAdminEntry ?? true);
 ?>
@@ -32,7 +32,7 @@ $showAdminEntry = (bool) ($showAdminEntry ?? true);
     <header class="topbar">
         <div class="container topbar-inner">
             <a class="brand" href="/">
-                <span class="brand-mark">FC</span>
+                <span class="brand-mark">FS</span>
                 <span class="brand-copy">
                     <strong><?= Security::escape($siteTitle) ?></strong>
                     <small><?= Security::escape($siteTagline) ?></small>

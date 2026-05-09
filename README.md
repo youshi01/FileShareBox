@@ -1,4 +1,4 @@
-# FileCodeBox PHP
+# FileShareBox PHP
 
 基于 `PHP + MySQL` 的匿名分享系统，支持文件上传、文本分享、提取码取件。
 
@@ -71,7 +71,7 @@ php -S 0.0.0.0:8000 -t public
 
 ```env
 DB_HOST=127.0.0.1
-DB_DATABASE=filecodebox
+DB_DATABASE=filesharebox
 DB_USERNAME=root
 DB_PASSWORD=
 

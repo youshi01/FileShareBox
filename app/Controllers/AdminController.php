@@ -181,7 +181,7 @@ final class AdminController
         }
 
         $payload = [
-            'site_name' => trim((string) ($_POST['site_name'] ?? 'FileCodeBox PHP')),
+            'site_name' => trim((string) ($_POST['site_name'] ?? 'FileShareBox PHP')),
             'site_tagline' => trim((string) ($_POST['site_tagline'] ?? '像取快递一样取文件，匿名分享文本和文件。')),
             'site_notice' => trim((string) ($_POST['site_notice'] ?? '')),
             'show_admin_entry' => isset($_POST['show_admin_entry']) ? '1' : '0',

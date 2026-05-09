@@ -38,7 +38,7 @@ final class HomeController
         $config = $configService->all();
 
         return [
-            'siteName' => $config['site_name'] ?? 'FileCodeBox PHP',
+            'siteName' => $config['site_name'] ?? 'FileShareBox PHP',
             'siteTagline' => $config['site_tagline'] ?? '像取快递一样取文件，匿名分享文本和文件。',
             'siteNotice' => $config['site_notice'] ?? '',
             'showAdminEntry' => ($config['show_admin_entry'] ?? '1') === '1',

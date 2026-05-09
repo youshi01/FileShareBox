@@ -21,7 +21,7 @@ if (PHP_SAPI !== 'cli') {
 try {
     $host = (string) app_config('db.host', '127.0.0.1');
     $port = (int) app_config('db.port', 3306);
-    $database = (string) app_config('db.database', 'filecodebox');
+    $database = (string) app_config('db.database', 'filesharebox');
     $charset = (string) app_config('db.charset', 'utf8mb4');
     $username = (string) app_config('db.username', 'root');
     $password = (string) app_config('db.password', '');

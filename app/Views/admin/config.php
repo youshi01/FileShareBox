@@ -39,7 +39,7 @@ $expireLabels = ['day' => '按天', 'hour' => '按小时', 'minute' => '按分�
         <div class="field-grid">
             <div class="field">
                 <label for="siteName">站点名称</label>
-                <input id="siteName" type="text" name="site_name" value="<?= htmlspecialchars((string) ($cfg['site_name'] ?? 'FileCodeBox PHP')) ?>" required>
+                <input id="siteName" type="text" name="site_name" value="<?= htmlspecialchars((string) ($cfg['site_name'] ?? 'FileShareBox PHP')) ?>" required>
             </div>
             <div class="field">
                 <label for="siteTagline">首页副标题</label>

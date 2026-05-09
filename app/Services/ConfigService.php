@@ -21,7 +21,7 @@ final class ConfigService
     private ?array $cache = null;
 
     private array $defaults = [
-        'site_name' => 'FileCodeBox PHP',
+        'site_name' => 'FileShareBox PHP',
         'site_tagline' => '像取快递一样取文件，匿名分享文本和文件。',
         'site_notice' => '',
         'show_admin_entry' => '1',

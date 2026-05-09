@@ -226,7 +226,7 @@ if not exist "%APP_HOME%\app\storage\.installed" (
         exit /b 1
     )
 
-    "%MYSQL_DIR%\bin\mysql.exe" --protocol=TCP -h127.0.0.1 -P%MYSQL_PORT% -uroot -e "CREATE DATABASE IF NOT EXISTS filecodebox CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
+    "%MYSQL_DIR%\bin\mysql.exe" --protocol=TCP -h127.0.0.1 -P%MYSQL_PORT% -uroot -e "CREATE DATABASE IF NOT EXISTS filesharebox CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;"
     if errorlevel 1 (
         echo [ERROR] Failed to create database.
         exit /b 1
@@ -266,7 +266,7 @@ if errorlevel 1 (
     )
 )
 
-echo [OK] FileCodeBox started at http://127.0.0.1:%WEB_PORT%/
+echo [OK] FileShareBox started at http://127.0.0.1:%WEB_PORT%/
 start "" "http://127.0.0.1:%WEB_PORT%/"
 exit /b 0
 
@@ -321,14 +321,14 @@ exit /b 0
 
 :writeEnv
 (
-    echo APP_NAME=FileCodeBox PHP
+    echo APP_NAME=FileShareBox PHP
     echo APP_BASE_URL=http://127.0.0.1:%WEB_PORT%
     echo APP_TIMEZONE=Asia/Shanghai
     echo APP_DEBUG=0
     echo.
     echo DB_HOST=127.0.0.1
     echo DB_PORT=%MYSQL_PORT%
-    echo DB_DATABASE=filecodebox
+    echo DB_DATABASE=filesharebox
     echo DB_USERNAME=root
     echo DB_PASSWORD=
     echo DB_CHARSET=utf8mb4
@@ -394,7 +394,7 @@ exit /b 0
 Write-Step "Writing package notes"
 $notesPath = Join-Path $OutputDir "README_PORTABLE.txt"
 @'
-FileCodeBox Portable
+FileShareBox Portable
 ====================
 
 1) Double click start.cmd

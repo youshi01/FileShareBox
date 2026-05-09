@@ -13,7 +13,7 @@ use App\Helpers\Env;
  */
 return [
     'app' => [
-        'name' => Env::get('APP_NAME', 'FileCodeBox PHP'),
+        'name' => Env::get('APP_NAME', 'FileShareBox PHP'),
         'base_url' => rtrim((string) Env::get('APP_BASE_URL', ''), '/'),
         'timezone' => Env::get('APP_TIMEZONE', 'Asia/Shanghai'),
         'debug' => filter_var(Env::get('APP_DEBUG', '0'), FILTER_VALIDATE_BOOL),
@@ -21,7 +21,7 @@ return [
     'db' => [
         'host' => Env::get('DB_HOST', '127.0.0.1'),
         'port' => (int) Env::get('DB_PORT', '3306'),
-        'database' => Env::get('DB_DATABASE', 'filecodebox'),
+        'database' => Env::get('DB_DATABASE', 'filesharebox'),
         'username' => Env::get('DB_USERNAME', 'root'),
         'password' => Env::get('DB_PASSWORD', 'root'),
         'charset' => Env::get('DB_CHARSET', 'utf8mb4'),

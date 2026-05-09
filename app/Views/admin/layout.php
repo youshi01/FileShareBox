@@ -69,9 +69,9 @@ if ($currentPath === '/admin') {
     <div class="admin-shell">
         <aside class="admin-sidebar">
             <div class="admin-brand">
-                <span class="admin-brand-mark">FC</span>
+                <span class="admin-brand-mark">FS</span>
                 <div class="admin-brand-copy">
-                    <h1>FileCodeBox</h1>
+                    <h1>FileShareBox</h1>
                     <p>管理控制台</p>
                 </div>
             </div>

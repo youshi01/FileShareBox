@@ -1,6 +1,6 @@
-#define MyAppName "FileCodeBox Portable"
+#define MyAppName "FileShareBox Portable"
 #define MyAppVersion "1.0.0"
-#define MyAppPublisher "FileCodeBox"
+#define MyAppPublisher "FileShareBox"
 #define MyAppURL "http://127.0.0.1:18080/"
 
 [Setup]
@@ -9,10 +9,10 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
-DefaultDirName={localappdata}\FileCodeBoxPortable
+DefaultDirName={localappdata}\FileShareBoxPortable
 DisableProgramGroupPage=yes
 OutputDir=..\..\dist\installer
-OutputBaseFilename=FileCodeBoxPortable-Setup
+OutputBaseFilename=FileShareBoxPortable-Setup
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -29,8 +29,8 @@ Name: "desktopicon"; Description: "Create desktop icon"; GroupDescription: "Addi
 Source: "..\..\dist\portable\*"; DestDir: "{app}"; Flags: recursesubdirs createallsubdirs ignoreversion
 
 [Icons]
-Name: "{autoprograms}\FileCodeBox Portable"; Filename: "{app}\start.cmd"
-Name: "{autodesktop}\FileCodeBox Portable"; Filename: "{app}\start.cmd"; Tasks: desktopicon
+Name: "{autoprograms}\FileShareBox Portable"; Filename: "{app}\start.cmd"
+Name: "{autodesktop}\FileShareBox Portable"; Filename: "{app}\start.cmd"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\start.cmd"; Description: "Launch FileCodeBox Portable"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\start.cmd"; Description: "Launch FileShareBox Portable"; Flags: nowait postinstall skipifsilent

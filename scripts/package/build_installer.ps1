@@ -13,7 +13,7 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $projectRoot = Split-Path -Parent (Split-Path -Parent $scriptDir)
 
 if ([string]::IsNullOrWhiteSpace($IssFile)) {
-    $IssFile = Join-Path $scriptDir "FileCodeBoxPortable.iss"
+    $IssFile = Join-Path $scriptDir "FileShareBoxPortable.iss"
 }
 
 $portableDir = Join-Path $projectRoot "dist\portable"
