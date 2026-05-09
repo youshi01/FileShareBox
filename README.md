@@ -23,6 +23,32 @@ docker compose up -d
 
 默认管理员：`admin` / `admin123456`（首次登录后请修改）
 
+### 更新
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+### 回滚到指定版本
+
+```bash
+# 编辑 docker-compose.yml，将 image 改为指定版本
+# image: ghcr.io/youshi01/filesharebox:v1.0.0
+docker compose pull
+docker compose up -d
+```
+
+### 查看可用版本
+
+GitHub Packages 页面：`https://github.com/youshi01/FileShareBox/pkgs/container/filesharebox`
+
+## 本地构建（开发）
+
+```bash
+docker compose -f docker-compose.dev.yml up -d --build
+```
+
 ## 手动部署
 
 ### 环境要求
