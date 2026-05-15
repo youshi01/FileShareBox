@@ -15,6 +15,17 @@
 
 ## Docker 部署（推荐）
 
+### 一键部署（无需 clone）
+
+```bash
+mkdir -p FileShareBox/database && cd FileShareBox && \
+  curl -fsSL -o docker-compose.yml https://raw.githubusercontent.com/youshi01/FileShareBox/master/docker-compose.yml && \
+  curl -fsSL -o .env.example https://raw.githubusercontent.com/youshi01/FileShareBox/master/.env.example && \
+  curl -fsSL -o database/schema.sql https://raw.githubusercontent.com/youshi01/FileShareBox/master/database/schema.sql && \
+  cp .env.example .env && \
+  docker compose pull && docker compose up -d
+```
+
 ### 首次部署
 
 ```bash
@@ -25,6 +36,13 @@ docker compose up -d
 ```
 
 访问 `http://localhost:8080`，默认管理员 `admin` / `admin123456`（首次登录后请修改）。
+
+### 拉取镜像并启动
+
+```bash
+docker pull ghcr.io/youshi01/filesharebox:latest
+docker compose up -d
+```
 
 ### 更新版本
 
@@ -63,6 +81,38 @@ docker compose down
 
 - [GitHub Releases](https://github.com/youshi01/FileShareBox/releases) — 版本发布说明
 - [GHCR 镜像](https://github.com/youshi01/FileShareBox/pkgs/container/filesharebox) — Docker 镜像列表
+
+### Docker Run（不用 compose）
+
+```bash
+# 准备配置文件
+mkdir -p FileShareBox/database && cd FileShareBox
+curl -fsSL -o .env.example https://raw.githubusercontent.com/youshi01/FileShareBox/master/.env.example
+curl -fsSL -o database/schema.sql https://raw.githubusercontent.com/youshi01/FileShareBox/master/database/schema.sql
+cp .env.example .env
+
+# 拉取镜像
+docker pull mysql:8.0
+docker pull ghcr.io/youshi01/filesharebox:latest
+
+# 创建网络
+docker network create filesharebox
+
+# 启动 MySQL
+docker run -d --name filesharebox-db --network filesharebox \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=filesharebox \
+  -v mysql_data:/var/lib/mysql \
+  -v $(pwd)/database/schema.sql:/docker-entrypoint-initdb.d/init.sql \
+  mysql:8.0
+
+# 启动应用
+docker run -d --name filesharebox-app --network filesharebox \
+  -p 8080:80 \
+  -v $(pwd)/.env:/var/www/html/.env \
+  -v $(pwd)/storage/uploads:/var/www/html/storage/uploads \
+  ghcr.io/youshi01/filesharebox:latest
+```
 
 ## 本地构建（开发）
 
